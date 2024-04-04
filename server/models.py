@@ -1,9 +1,14 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
+from sqlalchemy import Column, Integer, Float, String
 from sqlalchemy_serializer import SerializerMixin
+from app import db
 
-metadata = MetaData()
+class Earthquake(db.Model, SerializerMixin):
+    __tablename__ = 'earthquakes'
 
-db = SQLAlchemy(metadata=metadata)
+    id = Column(Integer, primary_key=True)
+    magnitude = Column(Float)
+    location = Column(String)
+    year = Column(Integer)
 
-# Add models here
+    def __repr__(self):
+        return f"<Earthquake {self.id}, {self.magnitude}, {self.location}, {self.year}>"

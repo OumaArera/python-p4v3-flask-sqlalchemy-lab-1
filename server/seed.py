@@ -18,3 +18,5 @@ with app.app_context():
 
     # Commit the transaction
     db.session.commit()
+
+
